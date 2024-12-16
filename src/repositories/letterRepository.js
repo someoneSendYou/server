@@ -15,11 +15,11 @@ const createLetter = async (letterInfo) => {
    }
 };
 
-const getLetters = async (letterKey) => {
+const getLetters = async (id) => {
    try {
       const letters = await db.Letter.findOne({
          where: {
-            hashId: letterKey,
+            hashId: id,
          },
       });
       return letters;
@@ -28,5 +28,6 @@ const getLetters = async (letterKey) => {
       throw new Error('letterRepository crateLetter Err', err);
    }
 };
+
 
 module.exports = { createLetter, getLetters };
