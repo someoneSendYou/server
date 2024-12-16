@@ -3,5 +3,5 @@ const router = express.Router();
 const letterController = require('../controllers/letterController');
 
 router.post('/', letterController.createLetter);
-router.get('/:hashId', letterController.getLetters);
+router.get('/:id', letterController.getLetters);
 module.exports = router;

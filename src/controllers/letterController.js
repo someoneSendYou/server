@@ -4,8 +4,10 @@ const letterService = require('../services/letterService');
 const createLetter = async (req, res) => {
    try {
       const letterInfo = req.body;
-      if (await letterService.createLetter(letterInfo)) {
-         return res.status(StatusCodes.OK).json({ message: '작성 완' });
+      const hashId = await letterService.createLetter(letterInfo)
+      console.log(hashId)
+      if (hashId) {
+         return res.status(StatusCodes.OK).json({ url: hashId, message: '작성 완' });
       }
       return res.status(StatusCodes.BAD_REQUEST).json({ message: '잘못요청' });
    } catch (err) {
@@ -16,8 +18,8 @@ const createLetter = async (req, res) => {
 
 const getLetters = async (req, res) => {
    try {
-      const { hashId } = req.params;
-      const letters = await letterService.getLetters(hashId);
+      const { id } = req.params;
+      const letters = await letterService.getLetters(id);
       if (!letters || letters.length === 0) {
          return res.status(StatusCodes.NOT_FOUND).json({ message: '데이터 없음' });
       }
