@@ -7,7 +7,7 @@ const createLetter = async (letterInfo) => {
          comment: letterInfo.comment,
          hashId: letterInfo.hashId,
          templete_id: letterInfo.templete_id,
-		 imgPath: letterInfo.imgPath
+		   imgPath: letterInfo.imgPath
       });
       return true;
    } catch (err) {
