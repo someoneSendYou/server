@@ -5,7 +5,8 @@ const createLetter = async (letterInfo) => {
    try {
       let hashId = 0
       while (true) {
-         hashId = crypto.randomBytes(10).toString('base64');
+         hashId = crypto.randomBytes(10).toString('base64').replace(/\//g, "-");
+		 
          if ((await letterRepository.getLetters(hashId))){
             continue
          }
